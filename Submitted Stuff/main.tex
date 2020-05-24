@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hanging}
+\usepackage{blindtext}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+\usepackage
+[       a4paper,
+        left=3cm,
+        right=3cm
+] {geometry}
+
+
+
+% =====INTERNET CODE COPIED========================
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+
+
+%========== INTERNET COPIED CODE ENDS===============
+
+
+%\usepackage{indentfirst}
+\usepackage{comment}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\setcounter{secnumdepth}{4}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\begin{document}
+
+
+\input{title.tex}
+
+\newpage
+
+\begin{center}
+    \Huge{Change History} 
+\end{center}{}
+ 
+
+
+\begin{table}[H]
+\begin{center}
+    
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{\Huge{Version}} & \textbf{\Huge{Date}}  \\ \hline
+ %
+\end{tabular}
+\end{center}
+\end{table}
+
+\newpage
+
+
+
+\begin{flushleft}
+    \tableofcontents
+\end{flushleft}
+
+\newpage
+
+\begin{flushleft}
+    \listoffigures
+\end{flushleft}
+
+\newpage
+
+\begin{flushleft}
+    \listoftables
+\end{flushleft}
+
+\newpage
+
+
+\section{Introduction}
+
+\subsection{Purpose of the System}
+The purpose of this system, namely 'Amazon Go', is to enable customers to shop without making them wait in line when they are ready to pay. To achieve this purpose, Amazon has opened lots of stores, which are highly equipped with cutting edge sensors and cameras. These cameras and sensors track the customer and products, and after the customer is done with shopping, she/he just walks out of store. The amount of his/her shopping will be automatically deduced from his/her specified payment method.
+    
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+% ========== MIGHT BE NECESSARY==================%
+
+%``I always thought something was fundamentally wrong with the universe'' \citep{adams1995hitchhiker}
+%\bibliographystyle{plain}
+%\bibliography{references}

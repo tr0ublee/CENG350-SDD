@@ -124,10 +124,11 @@
     \subsection{Purpose of the System}
 
     % Copied from the SRS. Ask if this is valid.
-    The purpose of this system, namely 'Amazon Go', is to enable customers to shop without making them wait in line when they 
-    are ready to pay. To achieve this purpose, Amazon has opened lots of stores, which are highly equipped with cutting edge 
-    sensors and cameras. These cameras and sensors track the customer and products, and after the customer is done with shopping, 
-    she/he just walks out of store. The amount of his/her shopping will be automatically deduced from his/her specified payment method.
+    The purpose of this system, namely 'Amazon Go', is to enable customers to shop without making them wait in line with a few
+    requirements only, which are a smart phone and an Amazon account with a registered credit card. To achieve this purpose, Amazon has opened lots of stores, 
+    which are highly equipped with cutting edge sensors and cameras. These cameras and sensors track the customer and products,
+    and after the customer is done with shopping, she/he just walks out of store. The amount of his/her shopping will be automatically 
+    deduced from his/her specified payment method.
         
 
     \subsection{Scope}
@@ -144,7 +145,9 @@
         \item System will use several APIs to communicate with the specified payment method of the customers, such as bank accounts. 
             By doing so, system will be able to withdraw money from the customer's account when she/he is done with shopping.
         
-        \item System will use a database to store products' information. Only the system admins are able to make changes and read the database.
+        \item System will use a database to store customer related information, temporary customer shopping cart, store workers' information,
+            products' information and a database table for the system admins. Those mentioned tables such as customer related information 
+            actually consist of multiple tables. Only the system admins are able to make changes and read the database.
         
         \item System will keep log of all the shoppings of the users on the remote server for legal purposes. Only system admins can see these logs.
         
@@ -156,11 +159,34 @@
 
     \subsection{Stakeholders and their concerns}
         \begin{itemize}
-            \item {Amazon}
-            \item {Users}
-            \item {System Developers}
-            \item {IT Staff}
-            \item {Store Worker}
+            
+            \item {\textbf{Amazon:}}
+                Being the owner of the whole system and the store, Amazon's main concern is reliability of the system so that Amazon will 
+                not lose money due to sensor failures or due to customers tricking the sensors and being charged less than they are supposed to be charged.
+                Privacy of the customers is also important as this may have legal consequences.
+
+            \item {\textbf{Users:}}
+                Users are actually the customers that visit Amazon GO stores. They have four main concerns, which are, firstly, not waiting 
+                in line to pay for what they had bought; secondly, precision of the sensors so that they do not pay extra money
+                due to sensors' fault; thirdly, security of their personal information such as their credit card information, place of residence etc., 
+                which are stored in the Amazon servers; and lastly, having a mobile application which is easy to use.
+               
+            \item {\textbf{System Developers:}}
+                Developers are very critical for this system, because it completely relies on the software. Their main concern is maintainability, due
+                to complexity of the system. For this purpose, the documentation and the system itself should be organized very well. Also, the system 
+                must be set up in a way that if one component fails, restoration of this component and integration of the new component, which replaces the 
+                faulty one, with the system must be easy.
+
+            \item {\textbf{IT Staff:}}
+                IT Staff are basically the system administrators, who are responsible to maintain databases and communicate with the store workers when needed.
+                They are essential in the continuity of the system. Their major concern is that sustainability of the database, which is created by the system
+                developers when the system is being developed. 
+
+            \item {\textbf{Store Workers:}}
+                Store workers are the people that are responsible for the product placement and shelf maintenance. They are mostly concerned about the 
+                illegal actions. Therefore, they should be trained to what to do for the most of the possible scenarios. 
+                Their main concerns are being able to easily reach a system admin in case of a failure, and being able to contact with the security
+                in case of an illegal action by the customers.  
         \end{itemize}
 
 \section{References}

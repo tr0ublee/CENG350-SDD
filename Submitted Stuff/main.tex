@@ -121,11 +121,55 @@
 
 \section{Introduction}
 
-\subsection{Purpose of the System}
-The purpose of this system, namely 'Amazon Go', is to enable customers to shop without making them wait in line when they are ready to pay. To achieve this purpose, Amazon has opened lots of stores, which are highly equipped with cutting edge sensors and cameras. These cameras and sensors track the customer and products, and after the customer is done with shopping, she/he just walks out of store. The amount of his/her shopping will be automatically deduced from his/her specified payment method.
-    
+    \subsection{Purpose of the System}
+
+    % Copied from the SRS. Ask if this is valid.
+    The purpose of this system, namely 'Amazon Go', is to enable customers to shop without making them wait in line when they 
+    are ready to pay. To achieve this purpose, Amazon has opened lots of stores, which are highly equipped with cutting edge 
+    sensors and cameras. These cameras and sensors track the customer and products, and after the customer is done with shopping, 
+    she/he just walks out of store. The amount of his/her shopping will be automatically deduced from his/her specified payment method.
+        
+
+    \subsection{Scope}
+        \begin{itemize}
+        \item System will have a mobile application, which will enable users (i.e, store customers) to interact with the system. 
+            Customers will log in to store by using the QR code provided to them by their mobile application. 
+            Mobile application is also the place where customers sign up to the system, see their current cart status, and past shoppings.
+        \item System will use remote servers to keep data of the customers, such as current shopping session, payment information, etc. 
+            Remote server will also communicate with the mobile application to enable a customer to see his/her current shopping session, 
+            past shoppings, etc. 
+        \item System will have physical stores, which are equipped with very sensitive sensors and cameras. Using Artificial Intelligence 
+            and Computer Vision algorithms, these cameras and sensors will gather information from the store and communicate with the remote server.
+        
+        \item System will use several APIs to communicate with the specified payment method of the customers, such as bank accounts. 
+            By doing so, system will be able to withdraw money from the customer's account when she/he is done with shopping.
+        
+        \item System will use a database to store products' information. Only the system admins are able to make changes and read the database.
+        
+        \item System will keep log of all the shoppings of the users on the remote server for legal purposes. Only system admins can see these logs.
+        
+        \item System will also have a store worker interface to enable the store worker to troubleshoot in case something goes wrong in the store, 
+        such as sensor malfunctioning, incorrect amount of money withdrawn from the customer, wrong product was added to a customer's cart, etc.
+        \end{itemize}
 
 
+
+    \subsection{Stakeholders and their concerns}
+        \begin{itemize}
+            \item {Amazon}
+            \item {Users}
+            \item {System Developers}
+            \item {IT Staff}
+            \item {Store Worker}
+        \end{itemize}
+
+\section{References}
+\section{Glossary}
+\section{Architectural Views}
+    \subsection{Context View}
+    \subsection{Composition View}
+    \subsection{Information View}
+    \subsection{Interface View}
 
 
 

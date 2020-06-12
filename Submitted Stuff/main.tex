@@ -627,6 +627,90 @@ $$ $$
         \end{centering}
         \end{table}    
 
+        %% == NEW USES CASES == %%
+        \begin{table}[H]
+            \begin{centering}
+            \begin{tabular}{|p{2.5cm}|p{9cm}|}
+            \hline
+            Use case name & Mark Product as Favorite \\ \hline
+            Actors        & Customers, Mobile Application \\ \hline
+            Description   & Customers should be able to add a product that they buy frequently or a product that they wish to buy to their favorite products list. \\ \hline
+            Data          & Product ID, Customer ID \\ \hline
+            Stimulus      & A user pressing the 'Star' on the page of the product using the mobile application. \\ \hline
+            Response      & A message indicating whether the operation was successful or not.  \\ \hline
+            Basic Flow    & 
+            1- Customer logs in to the mobile application. \newline
+            2- User navigates to the product's page on the mobile application via the search button or via the categories. \newline
+            3- System loads the product page. \newline
+            4- User presses the dimmed 'Star' icon on the loaded page. \newline
+            5- 'Star' icon is lighted up and the product is added to the user's favorites. \\ \hline
+            Alternative
+                Flow      & 
+                4- User presses the already lighted up 'Star' icon \newline
+                5- 'Star' icon is dimmed and the product is removed from the user's favorites. \\ \hline
+                
+            Comments      & On each press to 'Star' icon, the icon is basically toggled. \\ \hline
+        \end{tabular}
+        \caption{Mark Product as Favorite}
+        \label{tab_12}
+        \end{centering}
+        \end{table}    
+
+        \begin{table}[H]
+            \begin{centering}
+            \begin{tabular}{|p{2.5cm}|p{9cm}|}
+            \hline
+            Use case name & Report an Issue  \\ \hline
+            Actors        & Customers, Mobile Application \\ \hline
+            Description   & A user should be able to communicate with the system admins in case of any problems or questions.\\ \hline
+            Data          & User ID, User Message \\ \hline
+            Stimulus      & User presses the 'Report an Issue' button at the main page of the mobile application. \\ \hline
+            Response      & Validation that issue is reported or not.  \\ \hline
+            Basic Flow    & 
+            1- Customer logs in to the mobile application. \newline
+            2- User navigates to the issue reporting page by pressing the 'Report an Issue' button. \newline
+            3- A textbox appears on the screen which waits for user to enter his message.\newline
+            4- User enters his/her message and presses the send button. \newline
+            5- A notification appears if the message is transmitted successfully or not. \\ \hline
+            Alternative
+                Flow      & - \\ \hline
+            Comments      & If a user sends two seperate messages consecutively, these messages shall be merged to avoid spam. Also a user 
+                            should be able to send only one message in ten minutes. \\ \hline
+        \end{tabular}
+        \caption{Report an Issue}
+        \label{tab_13}
+        \end{centering}
+        \end{table}    
+
+
+        \begin{table}[H]
+            \begin{centering}
+            \begin{tabular}{|p{2.5cm}|p{9cm}|}
+            \hline
+            Use case name & Process the Issue  \\ \hline
+            Actors        & System Administrators \\ \hline
+            Description   & System admins inspect the issue provided by the user and take action accordingly. \\ \hline
+            Data          & Response Message, User ID \\ \hline
+            Stimulus      & An admin pressing the 'Inspect Issues' button on the admin page.\\ \hline
+            Response      & The status of the selected issue is updated (such as ongoing, solved etc.) \\ \hline
+            Basic Flow    & 
+            1- An admin logs into the admin page using his Admin ID and password. \newline
+            2- The admin presses the 'Inspect Issues' button on the admin page.\newline
+            3- A list of unsolved issues are shown to the admin.  \newline
+            4- The admin selects an issue by the date (early messages first). \newline
+            5- The admin takes action (such as inspecting the logs) and sends a reply to the issuer. \\ \hline
+            Alternative
+                Flow      & 
+            6- The admin marks the issue as solved.\\ \hline
+            Comments      & \\ \hline
+        \end{tabular}
+        \caption{Process the Issue}
+        \label{tab_14}
+        \end{centering}
+        \end{table}    
+
+
+
     \subsection{Composition View}
     \subsection{Information View}
     \subsection{Interface View}

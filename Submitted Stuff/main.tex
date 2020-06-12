@@ -236,8 +236,17 @@ $$ $$
     \label{glossary}
       \end{center}
 \end{table}
+
+\newpage
+
 \section{Architectural Views}
     \subsection{Context View}
+
+    In this viewpoint, the systems that Amazon GO interacts with are shown on the \nameref{contextDiagram} below. The following \nameref{ucaseDiagram} 
+    shows the actors and their possible interactions with different scenarios. The detailed information about these use case functions can be found
+    on the tables after the Use Case Diagram. These tables give detailed information for each use case function including alternative scenarios.
+    During the implementation, these tables shall be considered and implementation must follow the mentioned scenarios.
+
     \begin{center}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{Images/contextDiagram.png}
@@ -245,6 +254,17 @@ $$ $$
             \label{contextDiagram}
         \end{figure}
         \end{center}
+
+    \begin{center}
+        \begin{figure}[H]
+            \includegraphics[width=\linewidth]{Images/UseCaseDiagram.png}
+            \caption{Use Case Diagram}
+            \label{ucaseDiagram}
+        \end{figure}
+        \end{center}
+
+
+
     \subsection{Composition View}
     \subsection{Information View}
     \subsection{Interface View}

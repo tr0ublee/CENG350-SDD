@@ -263,7 +263,369 @@ $$ $$
         \end{figure}
         \end{center}
 
+    \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & Customer recognition \\ \hline
+        Actors        & Customers, Sensors \\ \hline
+        Description   & Immediately after the customer gets his/her QR code scanned, environmental cameras must track his/her movements and positions continuously. Cameras must regularly recognize the customers with their face, clothes etc. and must communicate with the remote server until the customer leaves the store. In order to not to lose visual contact with the customer, every angle in the store must be watched by the cameras and the sensors. \\ \hline
+        Data          & Customers' physical details such as clothes, face, and body movements.  \\ \hline
+        Stimulus      & The customer getting his/her QR code scanned. \\ \hline
+        Response      & Match the user ID with the acquired visual data of the customer. \\ \hline
+        Basic Flow    & 
+        1- Upon QR scanning, visual sensors receive a user ID and identify the unknown customer with the ID. \newline
+        2- Visual sensors track customer's movements and position continuously. \newline
+        3- Customer picks up a product. \newline
+        4- Customer information is sent to the server.\newline
+        5- Flow goes back to step 2. \\ \hline
+        Alternative
+            Flow \#1  & 
+        3- Customer puts a product back to a shelf. \newline
+        4- Customer information is sent to the server. \newline
+        5- Flow goes back to step 2. \\ \hline
+        Alternative
+            Flow \#2  &
+        3- Customer leaves the store. \newline
+        4- Customer information is sent to the server. \newline
+        5- System stops tracking the customer. \\ \hline
+        Comments      & Immediately after a customer logs in to store, sensors must assign a unique customer ID to that user. \\ \hline
+        
+        \end{tabular}
+        \caption{Customer Recognition}
+        \label{tab3}
+        \end{centering}
+        \end{table}    
+        
+        
+        
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & Product recognition  \\ \hline
+        Actors        & Sensors \\ \hline
+        Description   & Right after a product is placed to a shelf by the store staff and the product is marked as 'exist' on the store database, the corresponding ID which belongs to the same product set must be assigned to the product. After that point, until someone buys the product and leaves the store, product must be tracked by using its weight information, visual information, and shelf location. A customer is allowed to take a product, put it into his/her bag, and put the product back to any shelf. In that case, for some time, the visual contact with the product would be lost, but after the product is put back to the shelf, system must recover and continue tracking this product. A customer can put a product back to a different shelf, in that case, the product must be recognized by its visual data and weight again. \\ \hline
+        Data          & Weight, physical characteristics, and the location of products. \\ \hline
+        Stimulus      & A product is placed to a shelf by the store worker and marked as exist in the store. \\ \hline
+        Response      & Match the product with the products in the database. \\ \hline
+        Basic Flow    & 
+        1- A product is placed to a shelf by the staff. \newline
+        2- Query the database with the shelf location, visual data and weight. \newline
+        3- Assign the received product ID to corresponding product set.
+        \newline
+        4- Sensors work continuously to detect product movements. \newline
+        5- A product is taken from a shelf. \newline
+        6- Product information is sent to the server. \newline
+        7- Flow goes back to step 4. \\ \hline
+        Alternative
+            Flow      & 
+        5- A product is placed to a shelf by a customer. \newline
+        6- Product information is sent to the server. \newline
+        7- Flow goes back to step 4. \\ \hline
+        Comments      & Initially, products must be registered to the database and must be assigned to a shelf. \\ \hline
+        
+        \end{tabular}
+        \caption{Product Recognition}
+        \label{tab7}
+        \end{centering}
+        \end{table}    
+        
 
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & Scan login QR code \\ \hline
+        Actors        & Customers \\ \hline
+        Description   & A procedure to log users in to store by scanning their QR code via turnstiles. Turnstiles must allow access after a successful scan. Turnstiles must not allow the customers to enter the store if the scan fails and must display the reason. For security reasons, if the same QR is scanned while there is a shopping session with that QR code, login must not be allowed and QR code must be disabled for security purposes. Additionally, customer must be informed about every login with an SMS.    \\  \hline
+        Data          & User information. \\ \hline
+        Stimulus      & Users showing their QR code to turnstiles. \\ \hline
+        Response      & Validation or invalidation of the QR code.  \\ \hline
+        Basic Flow    &
+        1- Customer shows the QR code to turnstile QR scanner. \newline
+        2- Turnstile scans the QR and sends the data to the server. \newline
+        3- Server processes the store information and the customer information. \newline
+        4- Server responds with success. \newline
+        5- Turnstile gives access to the customer. \newline
+        6- Server sends SMS notification to the customer. \\ \hline
+        Alternative
+            Flow      & 
+        4- Server responses with failure. \newline
+        5- Failure reason is displayed. \newline
+        6- Server sends SMS notification to the customer. \\ \hline
+        Comments      & Customer must be a registered member. GPS can be used to improve the security.\\ \hline
+        
+        \end{tabular}
+        \caption{Scan Login QR Code}
+        \label{tab}
+        \end{centering}
+        \end{table}    
+        
+        
+                
+        \begin{table}[H]
+        \begin{centering} 
+        
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & Pick Product  \\ \hline
+        Actors        & Customers, Sensors  \\ \hline
+        Description   & A procedure to detect customers when they pick up a product from the shelves. When a customer picks a product, weight sensors must detect the change and must send the related data, also visual sensors must recognize the customer who picks up the product and provide additional data about the product. If the customer picks up multiple products at the same time, sensors must be precise enough to handle the situation.  \\ \hline
+        Data          & Customer information, product's price and other information
+                        related to that product. \\ \hline
+        Stimulus      & Customers picking products. \\ \hline
+        Response      & Add the picked product to customer's cart, update the cart information. \\ \hline
+        Basic Flow    & 
+        1- Customer picks a product up from a shelf. \newline
+        2- Weight sensors detect the change. \newline
+        3- Visual sensors detect the customer action and assists product recognition. \newline
+        4- Sensors send data to server. \newline
+        5- Server processes data, adds the related product to customer's cart.
+        \\ \hline
+        Alternative
+            Flow      & - \\ \hline
+        Comments      & Customers must get their QR code scanned successfully before shopping. \\ \hline
+        
+        \end{tabular}
+        \caption{Pick Product}
+        \label{tab1}
+        \end{centering}
+        \end{table}    
+        
+        
+        
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        
+        % uml
+        Use case name & Put back product  \\ \hline
+        Actors        & Customers, Sensors \\ \hline
+        Description   & A procedure to detect customers when they put a product back to shelves. When a customer puts a product back to a shelf, weight sensors must detect the change and must send shelf information, weight information and other related data, also visual sensors must recognize the customer who puts the product back and must provide additional data about the product. System must analyze the cart to be precise about the product. If the customer puts back multiple products at the same time, sensors must be precise enough to handle the situation.\\ \hline
+        Data          & Customer information, product's price and other information.  \\ \hline
+        Stimulus      & Customers putting a product back to shelf. \\ \hline
+        Response      & Delete the related product from the customer's cart. \\ \hline
+        Basic Flow    & 
+        1- Customer puts a product back to a shelf. \newline
+        2- Weight sensors detect the change. \newline
+        3- Visual sensors detect the customer action and assists product recognition. \newline
+        4- Sensors send data to server. \newline
+        5- Server processes data, removes the related product from customer's cart. \\ \hline
+        Alternative
+            Flow      & - \\ \hline
+        Comments      & The product must have been picked up beforehand and this must be in the same session. \\ \hline
+        
+        \end{tabular}
+        \caption{Put Back Product}
+        \label{tab2}
+        
+        \end{centering}
+        \end{table}    
+        
+        
+                
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & View cart info  \\ \hline
+        Actors        & Customers, Mobile Application \\ \hline
+        Description   & A customer must be able to see it's current cart status 
+                        by using the mobile app. Customer shall see the products she/he picked up, with their quantity and price. Total price must be also displayed. \\ \hline
+        Data          & The customer's cart status. \\ \hline
+        Stimulus      & The customer pressing the 'My Cart' button on the app.  \\ \hline
+        Response      & Show the customer's current cart status.  \\ \hline
+        Basic Flow    & 
+        1- Customer opens the app. \newline
+        2- Customer logins if not signed in already. \newline
+        3- Application opens the cart screen automatically. \newline
+        4- Application sends view cart request to the server. \newline
+        5- Server responds with the related data. \newline
+        6- Application shows the cart status. \\ \hline
+        Alternative
+            Flow      & - \\ \hline
+        Comments      & Data must be fetched from the remote server in case of an attempt to cheat. User must be shopping to be able to see the cart screen.\\ \hline
+        
+        \end{tabular}
+        \caption{View Cart Info.}
+        \label{tab4}
+        \end{centering}
+        \end{table}    
+        
+        
+        
+        \begin{table}[H]
+        \begin{centering}        
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & Enter personal and payment information  \\ \hline
+        Actors        & Customers, Mobile Application  \\ \hline
+        Description   & When a customer signs up, s/he must provide personal 
+                        information and payment method. If the payment method is invalid, application must request a valid method and must not allow another action to be taken by the customer until a valid payment method is provided.  \\ \hline
+        Data          & Personal data and payment data.  \\ \hline
+        Stimulus      & When a customer signs up or updates his/her information. \\ \hline
+        Response      & Validation or invalidation of the payment method. If validated, sign up or update the user. \\ \hline
+        Basic Flow    & 
+        1- Application shows a personal information form or a payment form. \newline
+        2- User enters information. \newline
+        3- Application checks the validity of the information at the same time. \newline
+        4- If everything is valid, a button is enabled to finish the process. \newline
+        5- User presses the button. \newline
+        6- Server inserts the related information to the database. \\ \hline
+        Alternative
+            Flow      & - \\ \hline
+        Comments      & If the customer is a member, then instead of signing him/her up, update the information. \\ \hline
+        
+        \end{tabular}
+        \caption{Enter Personal and Payment Information}
+        \label{tab5}
+        \end{centering}
+        \end{table}    
+        
+        
+        
+        \begin{table}[H]
+        \begin{centering}        
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & End shopping session  \\ \hline
+        Actors        & Mobile Application, Sensors \\ \hline
+        Description   & Visual sensors must detect when the customer leaves the store and report to remote server. Details about the shopping session must be visible from the application after session ends.  \\ \hline
+        Data          & Customer ID, store information.  \\ \hline
+        Stimulus      & Customer leaving the store. \\ \hline
+        Response      & Session information. \\ \hline
+        Basic Flow    & 
+        1- Customer walks out from the store. \newline
+        2- Visual sensors detects the action. \newline
+        3- End shopping session request is sent to servers with the customer ID. \newline
+        4- Server processes the request and saves the sessions information to the database. \newline
+        5- Visual sensors stop tracking that customer. \\ \hline
+        Alternative
+            Flow      & - \\ \hline
+        Comments      & Log the current session to database for possible further use.  \\ \hline
+        
+        \end{tabular}
+        \caption{End Shopping Session}
+        \label{tab6}
+        \end{centering}
+        \end{table}    
+        
+        
+                
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & Generate login QR code \\ \hline
+        Actors        & Mobile Application \\ \hline
+        Description   & Application must generate a unique QR code to enable customers log in. A generated QR code can be used multiple times until it is disabled due to security or user prompt. QR codes must be user specific. \\ \hline
+        Data          & Customer information. \\ \hline
+        Stimulus      & User pressing the 'QR Code' button on the mobile app. \\ \hline
+        Response      & Produce and show the QR code \\ \hline
+        Basic Flow    & 
+        1- A customer signs up. \newline
+        2- Application requests a QR code for the customer. \newline
+        3- Server generates a QR code that is unique to the customer.\\ \hline
+        Alternative
+            Flow      &
+        1- Customer presses the Refresh QR button. \newline
+        2- Application requests a QR code for the customer. \newline
+        3- Server generates a QR code that is unique to the customer.\\ \hline
+        Comments      & QR code must be generated and sent by the remote server in case of a cheating attempt. \\ \hline
+        
+        \end{tabular}
+        \caption{Generate Login QR Code}
+        \label{tab8}
+        \end{centering}
+        \end{table}    
+        
+        
+                
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & Withdraw money \\ \hline
+        Actors        & Mobile Application \\ \hline
+        Description   & When user leaves the store, withdraw money from his/her registered payment method. System must use the payment method provided by the customer. If the payment attempt fails due to lack of money or other reasons, notifications must be sent regularly until customer pays. Customer must not be allowed to shop until she/he pays.    \\ \hline
+        Data          & User ID. \\ \hline
+        Stimulus      & Upon the 'End shopping session' procedure. \\ \hline
+        Response      & Confirmation that payment is successful.  \\ \hline
+        Basic Flow    & 
+        1- System is informed by the End Shopping Session function. \newline
+        2- System requests a payment from the user's payment method via the Payment API. \newline
+        3- Payment is successful. \newline
+        4- Receipt is created.  \\ \hline
+        Alternative
+            Flow      & 
+        3- Payment is failed. \newline
+        4- An SMS notification is sent to the customer. \newline
+        5- The customer is blacklisted until the she/he pays. \\ \hline
+        Comments      & Further actions can be taken by the authorities if a payment is not received for a long time. \\ \hline
+        
+        \end{tabular}
+        \caption{Withdraw Money}
+        \label{tab9}
+        \end{centering}
+        \end{table}    
+        
+        
+                
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & View store stock  \\ \hline
+        Actors        & System Administrator \\ \hline
+        Description   & System admins must be able to see current stock status of each store and main warehouse. User must be warned about low stocks.\\ \hline
+        Data          & Store ID, admin ID. \\ \hline
+        Stimulus      & User pressing the 'View Stock' button on the mobile app. \\ \hline
+        Response      & Stock information .\\ \hline
+        Basic Flow    &
+        1- System admin opens the administration page. \newline
+        2- User presses the stock status tab. \newline
+        3- Overall stock status of each store is listed to the user. Stocks are colored according to the amount. \newline
+        4- User selects a store. \newline
+        5- Detailed stock status of the selected store is shown to the user.
+        \\ \hline
+        Alternative
+            Flow      & - \\ \hline
+        Comments      & User must be authorized to view stock information. \\ \hline
+        \end{tabular}
+        \caption{ View Store Stock }
+        \label{tab_10}
+        \end{centering}
+        \end{table}    
+        
+        
+                
+        \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \hline
+        Use case name & View system logs  \\ \hline
+        Actors        & System Administrators \\ \hline
+        Description   & Administrators must be able to see previous shopping session details of customers. Any inconsistency in sessions must be reported. \\ \hline
+        Data          & Time and date, Store ID, Customer ID \\ \hline
+        Stimulus      & Administrators reaching the log files. \\ \hline
+        Response      & Previous cart information, payment method  \\ \hline
+        Basic Flow    & 
+        1- System admin opens the administration page. \newline
+        2- User presses the view logs tab. \newline
+        3- Several filter options are shown to the user. \newline
+        4- User fills some of the filtering fields. \newline
+        5- User presses the search button. \newline
+        6- Results are listed. \\ \hline
+        Alternative
+            Flow      & - \\ \hline
+        Comments      & Only administrators can see the log files. \\ \hline
+        \end{tabular}
+        \caption{View System Logs}
+        \label{tab_11}
+        \end{centering}
+        \end{table}    
 
     \subsection{Composition View}
     \subsection{Information View}

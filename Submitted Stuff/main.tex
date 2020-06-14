@@ -713,7 +713,9 @@ $$ $$
 
     \subsection{Composition View}
         In this viewpoint, the components of the system are shown from a top-level point of view. Also, the design rationale for 
-        each decision is provided right after the \nameref{componentDia}. % \nameref here
+        each decision is provided right after the \nameref{componentDia}. 
+
+
         \begin{center}
             \begin{figure}[H]
                 \includegraphics[width=\linewidth]{Images/ComponentDiagram.png}
@@ -722,6 +724,21 @@ $$ $$
             \end{figure}
         \end{center}
 
+    \textbf{Design Rationale: \\}
+    \begin{itemize}
+        \item AmazonGo is a system that needs to handle several different tasks at the same time. Some of these tasks follow similar routines,
+        therefore some generic components and interfaces like Sensor Communucation system are used, which allows to keep the diagram simple
+        and more understandable.
+        \item Remote Server subsystem is the subsystem that
+    \end{itemize}
+
+    \begin{center}
+        \begin{figure}[H]
+            \includegraphics[width=\linewidth]{Images/DeploymentDiagram.png}
+            \caption{Deployment Diagram}
+            \label{deployDia}
+        \end{figure}
+    \end{center}
      
     \subsection{Information View}
     \subsection{Interface View}

@@ -8,8 +8,10 @@
 
 \usepackage
 [       a4paper,
-        left=3cm,
-        right=3cm
+        left=2.5cm,
+        right=2.5cm,
+        bottom=2.5cm,
+        top=2.5cm
 ] {geometry}
 
 
@@ -237,8 +239,6 @@ $$ $$
       \end{center}
 \end{table}
 
-\newpage
-
 \section{Architectural Views}
     \subsection{Context View}
 
@@ -248,7 +248,7 @@ $$ $$
     During the implementation, these tables shall be considered and implementation must follow the mentioned scenarios.
 
     \begin{center}
-        \begin{figure}[H]
+        \begin{figure}
             \includegraphics[width=\linewidth]{Images/contextDiagram.png}
             \caption{Context Diagram}
             \label{contextDiagram}
@@ -265,7 +265,7 @@ $$ $$
 
     \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & Customer recognition \\ \hline
         Actors        & Customers, Sensors \\ \hline
@@ -301,7 +301,7 @@ $$ $$
         
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & Product recognition  \\ \hline
         Actors        & Sensors \\ \hline
@@ -334,7 +334,7 @@ $$ $$
 
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & Scan login QR code \\ \hline
         Actors        & Customers \\ \hline
@@ -367,7 +367,7 @@ $$ $$
         \begin{table}[H]
         \begin{centering} 
         
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & Pick Product  \\ \hline
         Actors        & Customers, Sensors  \\ \hline
@@ -397,7 +397,7 @@ $$ $$
         
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         
         % uml
@@ -428,7 +428,7 @@ $$ $$
                 
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & View cart info  \\ \hline
         Actors        & Customers, Mobile Application \\ \hline
@@ -458,7 +458,7 @@ $$ $$
         
         \begin{table}[H]
         \begin{centering}        
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & Enter personal and payment information  \\ \hline
         Actors        & Customers, Mobile Application  \\ \hline
@@ -488,7 +488,7 @@ $$ $$
         
         \begin{table}[H]
         \begin{centering}        
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & End shopping session  \\ \hline
         Actors        & Mobile Application, Sensors \\ \hline
@@ -516,7 +516,7 @@ $$ $$
                 
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & Generate login QR code \\ \hline
         Actors        & Mobile Application \\ \hline
@@ -545,7 +545,7 @@ $$ $$
                 
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & Withdraw money \\ \hline
         Actors        & Mobile Application \\ \hline
@@ -575,7 +575,7 @@ $$ $$
                 
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & View store stock  \\ \hline
         Actors        & System Administrator \\ \hline
@@ -603,7 +603,7 @@ $$ $$
                 
         \begin{table}[H]
         \begin{centering}
-        \begin{tabular}{|p{2.5cm}|p{9cm}|}
+        \begin{tabular}{|p{2.5cm}|p{12cm}|}
         \hline
         Use case name & View system logs  \\ \hline
         Actors        & System Administrators \\ \hline
@@ -630,7 +630,7 @@ $$ $$
         %% == NEW USES CASES == %%
         \begin{table}[H]
             \begin{centering}
-            \begin{tabular}{|p{2.5cm}|p{9cm}|}
+            \begin{tabular}{|p{2.5cm}|p{12cm}|}
             \hline
             Use case name & Mark Product as Favorite \\ \hline
             Actors        & Customers, Mobile Application \\ \hline
@@ -658,7 +658,7 @@ $$ $$
 
         \begin{table}[H]
             \begin{centering}
-            \begin{tabular}{|p{2.5cm}|p{9cm}|}
+            \begin{tabular}{|p{2.5cm}|p{12cm}|}
             \hline
             Use case name & Report an Issue  \\ \hline
             Actors        & Customers, Mobile Application \\ \hline
@@ -685,7 +685,7 @@ $$ $$
 
         \begin{table}[H]
             \begin{centering}
-            \begin{tabular}{|p{2.5cm}|p{9cm}|}
+            \begin{tabular}{|p{2.5cm}|p{12cm}|}
             \hline
             Use case name & Process the Issue  \\ \hline
             Actors        & System Administrators \\ \hline
@@ -726,10 +726,42 @@ $$ $$
 
     \textbf{Design Rationale: \\}
     \begin{itemize}
-        \item AmazonGo is a system that needs to handle several different tasks at the same time. Some of these tasks follow similar routines,
-        therefore some generic components and interfaces like Sensor Communucation system are used, which allows to keep the diagram simple
+        
+        \item Remote Server is the component where most of the things are done. Any communication between components, interaction with database and any calculation 
+        that needs to be done for the AI and Computer Vision algorithms are done on the remote server.
+        
+        \item AI and Computer Vision calculations are done via the libraries, which reside on the server.
+        
+        \item Amazon Go is a system that needs to handle several different tasks at the same time. Some of these tasks follow similar routines.
+        Therefore some generic components and interfaces like Sensor Communication system are used, which allows to keep the diagram simple
         and more understandable.
-        \item Remote Server subsystem is the subsystem that
+
+        \item QR Authentication System is basically the entrance point of the system. It produces the QR code, then forwards it to the Login System of the mobile 
+        application. Then, the user gets his/her QR code scanned by the turnstiles, which posts the encrypted QR code to Sensor Communucation System. Sensor 
+        Communication System forwards this data to the corresponding Sensor API, QR code gets decrypted, and sent back to the QR Authentication System. 
+        QR Authentication system either validates or invalidates the QR Code, and depending on the output, it sends information to Sensor Communucation System, 
+        which then may send a stimulus for the turnstiles depending on the validation output.
+        
+        \item Sensor Communication System is used as an abstraction to define communication of all kinds of sensors including cameras, QR scanners on turnstiles 
+        and weight sensors on shelves. Raw sensor data is the sensor data produced by the corresponding sensor. This might be image data or weight data. 
+        QR Code data is shown separately as it has a separate target component.
+        
+        \item Computer Vision and AI System is basically a bridge between the Sensor Communication System and Computer Vision and AI Libraries. Any raw data that is 
+        produced by the sensors first passes through Sensor Communication System, which forwards this raw data to Computer Vision and AI System, which then 
+        forwards this data to the required libraries to be processed.
+        
+        \item DBMS is the place where the interaction with the database and the manipulation of the database take place. 
+        
+        \item Payment Handler is a component which is responsible of the payments. When a user exits the store, required payment information is taken from the 
+        database via DBMS, and this data is forwarded to Payment Handler. Depending on the bank, Payment Handler makes calls to the corresponding Bank API. 
+        
+        \item Mobile application provides some functionalities for the end users. It must communicate with the remote server in order to provide QR authentication and 
+        cart view features.
+        
+        \item Database mostly holds user and product related information. These data might be customers' and products' physical properties, customers' name, products' 
+        price and etc. Computer vision and AI mostly depend on that information while operating.
+        
+        \item Bank API is an abstraction that is used to define different Bank APIs. Depending on the user's choice of bank, it uses a different bank's API.
     \end{itemize}
 
     \begin{center}
@@ -739,7 +771,28 @@ $$ $$
             \label{deployDia}
         \end{figure}
     \end{center}
-     
+    
+    \textbf{Design Rationale: \\}
+    \begin{itemize}
+        \item The database is separate from the remote server so that in case of a system failure, the data does not get corrupted.
+        
+        \item Storage devices that are used in the database are connected via SATA interface as HDDs will be used as storage devices since SSDs are
+        too expensive to use as storage. 
+        
+        \item There are two mobile applications, one for Android and one for iOS. These will be downloadable from the corresponding stores. Main.jar and Main.swift 
+        are shown to show that these mobile applications will be developed in Java and Swift, respectively.
+        
+        \item The connections that are represented by $<<local\_in\_server>>$ means that these parts reside on the same computer that acts as a server. In other words,
+        they are basically stored in the storage devices of the server, which can be accessed by a basic disk seek operation.
+
+        \item MySQL is used for DBMS since it is open source and free.
+        
+        \item For simplicity, only one storage device which is connected to database is shown. However, system will use more than one storage devices, and some of them
+        will be used as backup disks.
+
+    \end{itemize}
+
+
     \subsection{Information View}
     \subsection{Interface View}
 

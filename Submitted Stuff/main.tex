@@ -798,6 +798,7 @@ $$ $$
     Detailed information about the operations are given after the \nameref{icd}. Furthermore, classes that are needed by the database operations can be seen 
     in detail on the Database Class Diagram. %NAMEREF HERE
     
+    \subsubsection{Interfaces}
     \begin{center}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{Images/InterfaceClassDiagram.png}
@@ -806,6 +807,48 @@ $$ $$
         \end{figure}
     \end{center}
 
+    \begin{table}[H]
+        \begin{centering}
+        \begin{tabular}{|p{4cm}|p{11cm}|}
+        \hline
+        \textbf{Operation} & \textbf{Description} \\ \hline
+        generateQRCode &\\ \hline
+        sendQRCode &\\ \hline
+        checkValidation &\\ \hline
+        sendAuthData &\\ \hline
+        receiveQR &\\ \hline
+        drawQR &\\ \hline
+        readPaymentInfo &\\ \hline
+        readCart &\\ \hline
+        sendPaymentRequest &\\ \hline
+        raisePaymentError &\\ \hline
+        validatePaymentCompletion &\\ \hline
+        getSensorIdList &\\ \hline
+        stimulateTurnstile&\\ \hline
+        readRawData&\\ \hline
+        sendRawData&\\ \hline
+        readEncryptedQRCode&\\ \hline
+        &\\ \hline
+        &\\ \hline       
+        &\\ \hline
+        &\\ \hline
+        &\\ \hline
+        &\\ \hline
+        &\\ \hline
+        &\\ \hline
+        &\\ \hline
+        &\\ \hline
+        &\\ \hline              
+    \end{tabular}
+    \caption{Operation descriptions}
+    \label{oper_desc}
+    \end{centering}
+    \end{table}    
+
+    \textbf{Design Rationale:\\}
+    
+    \subsubsection{Database Operations}
+
     \begin{center}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{Images/DatabaseClassDiagram.png}
@@ -813,6 +856,9 @@ $$ $$
             \label{dcd}
         \end{figure}
     \end{center}
+
+    \textbf{Design Rationale:\\}
+
 
     \subsection{Interface View}
 

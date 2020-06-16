@@ -5,6 +5,7 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{titlesec}
+\usepackage{longtable}
 
 \usepackage
 [       a4paper,
@@ -807,43 +808,44 @@ $$ $$
         \end{figure}
     \end{center}
 
-    \begin{table}[H]
-        \begin{centering}
-        \begin{tabular}{|p{4cm}|p{11cm}|}
+    \begin{longtable}[H]{|p{4cm}|p{11cm}|}
         \hline
         \textbf{Operation} & \textbf{Description} \\ \hline
-        generateQRCode &\\ \hline
-        sendQRCode &\\ \hline
-        checkValidation &\\ \hline
-        sendAuthData &\\ \hline
-        receiveQR &\\ \hline
-        drawQR &\\ \hline
-        readPaymentInfo &\\ \hline
-        readCart &\\ \hline
-        sendPaymentRequest &\\ \hline
-        raisePaymentError &\\ \hline
-        validatePaymentCompletion &\\ \hline
-        getSensorIdList &\\ \hline
-        stimulateTurnstile&\\ \hline
-        readRawData&\\ \hline
-        sendRawData&\\ \hline
-        readEncryptedQRCode&\\ \hline
-        &\\ \hline
-        &\\ \hline       
-        &\\ \hline
-        &\\ \hline
-        &\\ \hline
-        &\\ \hline
-        &\\ \hline
-        &\\ \hline
-        &\\ \hline
-        &\\ \hline
-        &\\ \hline              
-    \end{tabular}
+        generateQRCode & Generates a QR code for authentication. \\ \hline
+        sendQRCode & Sends the generated QR code to the mobile app. \\ \hline
+        checkValidation & Takes the decrypted QR code as input and checks whether it is valid or not. \\ \hline
+        sendAuthData & Sends the validation that is obtained from the checkValidation to the Sensor Communication System. \\ \hline
+        drawQR & Draws the generated QR Code onto the screen of the user's mobile application.\\ \hline
+        readPaymentInfo & Gets the payment information of the given customer by making calls to related Database Handler getter functions.\\ \hline
+        readCart & Gets the current cart information of the given customer by making calls to related Database Handler getter functions.\\ \hline
+        sendPaymentRequest & Chooses the correct Bank API and sends a request to this API to make the payment.\\ \hline
+        raisePaymentError & If payment is not successful, displays an error message. \\ \hline
+        validatePaymentCompletion & If payment is successful, displays a success message.\\ \hline
+        getSensorIdList & Given storeID, retrieves all sensors in this store and writes it to its sensorIDList variable.\\ \hline
+        stimulateTurnstile & If the validation of QR code is successful, sends a stimulant to turnstiles to open them.\\ \hline
+        readRawData & Reads the raw data (not processed data) from the sensors onto rawData variable. \\ \hline
+        sendRawData & Forwards rawData variable to AI Analyzer and Computer Vision Analyzer.\\ \hline
+        readEncryptedQRCode & After the QR code is generated and displayed on the user end, this function is called to obtain the generated QR code.\\ \hline
+        processData & Makes required computations for Computer Vision and AI.\\ \hline       
+        sendProcessedData & Posts the output of computations that are done by Computer Vision and AI to database handler to be registered.\\ \hline
+        readData & Retrieves the given customer's cart data by communicating with database handler..\\ \hline
+        displayData & Displays the retrieved cart data on the user's mobile app. \\ \hline
+        updateRecord & Updates the given record on the corresponding table. Class Data is a base class which instantiates other data classes 
+        such as class CustomerData, class StoreData etc.\\ \hline
+        addRecordToTable & Inserts the given record to the corresponding table.\\ \hline
+        deleteRecordFromTable & Deletes the given record from the corresponding table by ID.\\ \hline
+        getPaymentDetails & Gets the payment details of the given customer from the database.  \\ \hline
+        getProductData & Gets the product information of the given product from the database. \\ \hline
+        getCustomerData & Gets the customer information of the given customer from the database. \\ \hline      
+        getStoreData & Gets the store information of the given store from the database. \\ \hline
+        getSensorIdList & Gets all the sensors' ID that are in the given store from the database. \\ \hline
+        authorizeStoreWorker & Adds a store worker to the given storeID. Used when employing a store worker. \\ \hline
+        readReceipt & Gets the receipt data according to given parameters from the database. \\ \hline
+        readLog & Gets the logs that are related to given parameters from the database. \\ \hline
+        getCurrentCart & Gets the given customer's current cart information from the database. \\ \hline  
     \caption{Operation descriptions}
     \label{oper_desc}
-    \end{centering}
-    \end{table}    
+    \end{longtable}       
 
     \textbf{Design Rationale:\\}
     

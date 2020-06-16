@@ -1000,13 +1000,30 @@
 											"height": 13,
 											"text": "+sensorTypeList: List<enum SensorType>",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFyvWmqyl2286I=",
+											"_parent": {
+												"$ref": "AAAAAAFyuCIbmlS7cLQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFyvWmqkF2zbi0="
+											},
+											"font": "Arial;13;0",
+											"left": 493,
+											"top": 137,
+											"width": 383,
+											"height": 13,
+											"text": "+authData: class AuthData",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 488,
 									"top": 57,
 									"width": 393,
-									"height": 83
+									"height": 98
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1029,7 +1046,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 493,
-											"top": 145,
+											"top": 160,
 											"width": 383,
 											"height": 13,
 											"text": "+getSensorIDList(storeID: int)",
@@ -1046,7 +1063,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 493,
-											"top": 160,
+											"top": 175,
 											"width": 383,
 											"height": 13,
 											"text": "+stimulateTurnstile(sensorID: int)",
@@ -1063,7 +1080,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 493,
-											"top": 175,
+											"top": 190,
 											"width": 383,
 											"height": 13,
 											"text": "+readRawData(sensorID: int)",
@@ -1080,7 +1097,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 493,
-											"top": 190,
+											"top": 205,
 											"width": 383,
 											"height": 13,
 											"text": "+sendRawData(void)",
@@ -1097,35 +1114,18 @@
 											},
 											"font": "Arial;13;0",
 											"left": 493,
-											"top": 205,
-											"width": 383,
-											"height": 13,
-											"text": "+readEncryptedQRCode(void)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFyuC7giVYGw9o=",
-											"_parent": {
-												"$ref": "AAAAAAFyuCIbmlS8UKM="
-											},
-											"model": {
-												"$ref": "AAAAAAFyuC7gS1YDDlk="
-											},
-											"font": "Arial;13;0",
-											"left": 493,
 											"top": 220,
 											"width": 383,
 											"height": 13,
-											"text": "+readAuthData(void)",
+											"text": "+readEncryptedQRCode(void)",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 488,
-									"top": 140,
+									"top": 155,
 									"width": 393,
-									"height": 98
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -1165,7 +1165,7 @@
 							"left": 488,
 							"top": 32,
 							"width": 393,
-							"height": 217,
+							"height": 206,
 							"nameCompartment": {
 								"$ref": "AAAAAAFyuCIbmlS2ZGM="
 							},
@@ -2573,7 +2573,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 918,
-									"top": 90,
+									"top": 87,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -2594,7 +2594,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 916,
-									"top": 75,
+									"top": 72,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -2615,7 +2615,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 921,
-									"top": 119,
+									"top": 116,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -2633,7 +2633,7 @@
 								"$ref": "AAAAAAFyuCIbmlS1sks="
 							},
 							"lineStyle": 1,
-							"points": "881:116;959:107",
+							"points": "881:113;959:104",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFyuE+SSlgzNyk="
@@ -2667,7 +2667,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 928,
-									"top": 200,
+									"top": 198,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -2688,7 +2688,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 933,
-									"top": 186,
+									"top": 184,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -2709,7 +2709,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 919,
-									"top": 229,
+									"top": 227,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -2727,7 +2727,7 @@
 								"$ref": "AAAAAAFyuCIbmlS1sks="
 							},
 							"lineStyle": 1,
-							"points": "881:207;967:236",
+							"points": "881:204;967:234",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFyuE+gIFhEgsk="
@@ -2949,7 +2949,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 669,
-									"top": 281,
+									"top": 275,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -2970,7 +2970,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 654,
-									"top": 281,
+									"top": 275,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -2991,7 +2991,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 698,
-									"top": 282,
+									"top": 276,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3009,7 +3009,7 @@
 								"$ref": "AAAAAAFyuCIez1UHUi0="
 							},
 							"lineStyle": 1,
-							"points": "685:327;684:249",
+							"points": "685:327;684:238",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFyuFAI3FiAQh0="
@@ -3042,8 +3042,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 439,
-									"top": 151,
+									"left": 440,
+									"top": 147,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -3063,8 +3063,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 439,
-									"top": 166,
+									"left": 440,
+									"top": 162,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3084,8 +3084,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 440,
-									"top": 121,
+									"left": 439,
+									"top": 118,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3103,7 +3103,7 @@
 								"$ref": "AAAAAAFyuCIbmlS1sks="
 							},
 							"lineStyle": 1,
-							"points": "487:142;393:142",
+							"points": "487:138;393:140",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFyuFExC1ijmJw="
@@ -3476,6 +3476,15 @@
 							},
 							"name": "sensorTypeList",
 							"type": "List<enum SensorType>"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFyvWmqkF2zbi0=",
+							"_parent": {
+								"$ref": "AAAAAAFyuCIbmlSz4Tk="
+							},
+							"name": "authData",
+							"type": "class AuthData"
 						}
 					],
 					"operations": [
@@ -3568,25 +3577,6 @@
 									"_id": "AAAAAAFyuC4CPFYBhbE=",
 									"_parent": {
 										"$ref": "AAAAAAFyuC1iYlX5IgE="
-									},
-									"name": "void",
-									"type": ""
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAFyuC7gS1YDDlk=",
-							"_parent": {
-								"$ref": "AAAAAAFyuCIbmlSz4Tk="
-							},
-							"name": "readAuthData",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFyuC8BSlYKKog=",
-									"_parent": {
-										"$ref": "AAAAAAFyuC7gS1YDDlk="
 									},
 									"name": "void",
 									"type": ""

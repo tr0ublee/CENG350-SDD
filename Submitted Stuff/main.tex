@@ -808,7 +808,7 @@ $$ $$
         \end{figure}
     \end{center}
 
-    \begin{longtable}[H]{|p{4cm}|p{11cm}|}
+    \begin{longtable}[H]{|p{5cm}|p{11cm}|}
         \hline
         \textbf{Operation} & \textbf{Description} \\ \hline
         generateQRCode & Generates a QR code for authentication. \\ \hline
@@ -859,7 +859,101 @@ $$ $$
         \end{figure}
     \end{center}
 
+    \begin{longtable}[H]{|p{5cm}|p{9cm}|}
+        \hline
+        \textbf{Operation} & \textbf{CRUD} \\ \hline
+        generateQRCode & 
+          Create: Log \newline
+          Read  : Customer \newline
+          Update: \newline
+          Delete: \\ \hline
+        readPaymentInfo & 
+          Create: \newline
+          Read  : Payment \newline
+          Update: \newline
+          Delete: \\ \hline
+        readCart & 
+          Create: \newline
+          Read  : Customer, Cart \newline
+          Update: \newline
+          Delete: \\ \hline
+        validatePaymentCompletion & 
+          Create: Receipt, Log \newline
+          Read  : \newline
+          Update: \newline
+          Delete: Cart \\ \hline
+        sendProcessedData & 
+          Create: Log \newline
+          Read  : \newline
+          Update: Cart \newline
+          Delete: \\ \hline
+        updateRecord & 
+          Create: Log \newline
+          Read  : \newline
+          Update: Payment, Customer, Cart, Product, Stock, Store, Store Worker, Sensor, System Admin \newline
+          Delete: \\ \hline
+        addRecordToTable & 
+          Create: Payment, Customer, Cart, Product, Stock, Store, Store Worker, Sensor, System Admin, Receipt, Log \newline
+          Read  :  \newline
+          Update: \newline
+          Delete: \\ \hline
+        deleteRecordFromTable & 
+          Create: Log \newline
+          Read  : \newline
+          Update: \newline
+          Delete: Payment, Customer, Cart, Product, Stock, Store, Store Worker, Sensor, System Admin \\ \hline
+        getPaymentDetails & 
+          Create: \newline
+          Read  : Payment \newline
+          Update: \newline
+          Delete: \\ \hline
+        getCustomerData & 
+          Create: \newline
+          Read  : Customer \newline
+          Update: \newline
+          Delete: \\ \hline
+        getStoreData & 
+          Create: \newline
+          Read  : Store \newline
+          Update: \newline
+          Delete: \\ \hline
+        getSensorIDList & 
+          Create: \newline
+          Read  : Sensor \newline
+          Update: \newline
+          Delete: \\ \hline
+        authorizeStoreWorker & 
+          Create: Store Worker, Log \newline
+          Read  : \newline
+          Update: \newline
+          Delete: \\ \hline
+        readReceipt & 
+          Create: \newline
+          Read  : Receipt \newline
+          Update: \newline
+          Delete: \\ \hline
+        readLog & 
+          Create: \newline
+          Read  : Log \newline
+          Update: \newline
+          Delete: \\ \hline
+        getCurrentCart & 
+          Create: \newline
+          Read  : Cart \newline
+          Update: \newline
+          Delete: \\ \hline
+        
+    \caption{CRUD Operations}
+    \label{CRUD}
+    \end{longtable}       
+
+
     \textbf{Design Rationale:\\}
+    \begin{itemize}
+        \item MySQL will be used as the database management system.
+        \item Important operations will create logs as it can be seen on the \hyperref[CRUD]{Table 18.}
+        \item updateRecord, addRecordToTable and deleteRecordFromTable are generic functions that are able to manipulate certain tables. These will also create a log every time they are called.
+    \end{itemize}
 
 
     \subsection{Interface View}

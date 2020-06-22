@@ -957,12 +957,85 @@ $$ $$
 
 
     \subsection{Interface View}
+    In this view, the internal interfaces between the components of the system and the external interfaces between the 
+    Amazon Go and the other systems will be specified in detail.
+    
+    \subsubsection{Internal Interfaces}
+    \textbf{The Interface between the Database Handler and the Sensor Communication Handler:\\}
+    Database Handler uses Sensor Communication Handler in order to send data to sensors and receive data from the sensors. Information that need to be stored are first passes
+    through Sensor Communication Handler, and stop at Database Handler in order to be stored. When the data needs to be processed, Database Handler fetches this data
+    and sends it to Computer Vision and AI analyzer via Sensor Communication Handler.  
+    \textbf{Design Rationale:\\}
+    \begin{itemize}
+        \item  Database Handler is the main part of the program as Amazon Go runs on lots of environmental data, and hence, interaction of the Database Handler and
+        Sensor Communication handler is a must.
+        \item Having the middleman Sensor Communication Handler between the Database and Computer Vision - AI Analyzer enables buffering of the data, meaning that 
+            Database Handler can serve to other components when there is no data to be stored or fetched. Hence, Sensor Communication Handler can be used as cache to Computer
+            Vision and AI Systems.
+    \end{itemize}
+    
 
+    \textbf{The Interface between the Database Handler and the Cart Status:\\}
+    Cart status is responsible for issuing a current cart read request to the Database Handler and storing it. In other words, it will ask the user's cart information to the Database Handler and 
+    Database Handler will fetch it from the database and will send it as a response. After that, it is responsible for displaying the retrieved cart data to the user. 
+    \textbf{Design Rationale:\\}
+    \begin{itemize}
+       \item Cart Status component must be very responsive as it is an I/O operation and noone wants to wait when he/she clickes to an icon on the mobile device. 
+       Hence, there is no middleman between Database Handler and Cart Status
+       \item Current cart status is stored in the database, so Database Handler is responsible from retrieving the current cart data. 
+       \item Since Cart Status is an I/O operation, Database Handler may give priority to it.
+    \end{itemize}
+    
+    \textbf{The Interface between the Database Handler and Payment Handler:\\}
+    Paymend Handler is responsible for handling the payment related operations. It will ask for the user's payment information and cart information to the Database Handler,
+    then Database Handler will fetch them from the database and will send them as a response. 
+    After that, Payment Handler tries to complete the payment by using the retrieved data and depending on if the payment was a success or not, it either raises an error or 
+    returns a message about the successful completion of the payment.
+    
+    \textbf{Design Rationale:\\}
+    \begin{itemize}
+       \item Since there are more than 1 banks, Payment Handler might be more than one. For simplicity, it is shown as one component but the operations for different banks 
+       shall follow the same procedures. 
+       \item Payment Handler is directly connected to Database Handler for safety reasons as well. Since critical information flows during this operation, 
+       by not introducing an additional middle-man, we decrease the chance of an intrusion. 
+    \end{itemize}
 
+    \textbf{The Interface between the Sensor Communication Handler and Computer Vision Analyzer:\\}
+    Computer Vision Analyzer will receive visual data from the Sensor Communication Handler to process it. Then, it will send back the processed data. How Sensor 
+    Communication Handler works and design rationale for this is given in the first item of this subsection. 
+    
 
+    \textbf{The Interface between the Sensor Communication Handler and AI Analyzer:\\}
+    AI Analyzer will receive AI related data from the Sensor Communication Handler to process it. Then, it will send back the processed data. 
+    How Sensor Communication Handler works and design rationale for this is given in the first item of this subsection. 
+    
+    \textbf{The Interface between the QR Authentication System and Sensor Communication Handler:\\}
+    QR Authentication System receives decrypted QR code from Sensor Communication Handler to validate it. Then, sends the result as a response to Sensor Comminucation Handler.
+    Sensor Comminucation Handler interacts with turnstiles for this particular case. It is responsible for validating the QR code and stimulating the turnstiles. 
+    \begin{itemize}
+        \item QR Authentication System generates encrypted QR codes and validates decrypted QR codes. Decrypted ones comes from the ensor Communication Handler.
+        \item Sensor Communication Handler acts as a buffer and a cache between QR Authentication System and Database Handler. 
+     \end{itemize}
 
-
-
+    \textbf{The Interface between the QR Authentication System and Login System:\\}
+    Login system requires encrypted QR code to display it to user's phone. QR Authentication System sends that QR to login system.
+    \textbf{Design Rationale:\\}
+    \begin{itemize}
+       \item Users need QR code to enter the stores. Login System displays it and QR Authentication System handles the rest.
+       \item QR code can be generated by the QR Authentication System only and Login System will request QR codes from it very frequently.
+       \item Since Login is an I/O operation, Database Handler may give priority to it.
+       \item As explained, authentication is QR code is made by System Communication Handler.
+    \end{itemize}
+    
+    \subsubsection{External Interfaces}
+    \subsubsubsection{User Interfaces}
+    \textbf{Remote Server Interface:\\}
+    \textbf{Sensor Management Interface:\\}
+    \textbf{Database Management Interface:\\}
+    \textbf{Payment API:\\}
+    \subsubsubsection{System Interfaces}
+    \textbf{User Sign-up Interface:\\}
+    \textbf{User Cart Interface:\\}
 \end{document}
 
 

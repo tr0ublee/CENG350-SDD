@@ -959,13 +959,14 @@ $$ $$
     \subsection{Interface View}
     In this view, the internal interfaces between the components of the system and the external interfaces between the 
     Amazon Go and the other systems will be specified in detail.
+
     
     \subsubsection{Internal Interfaces}
     \textbf{The Interface between the Database Handler and the Sensor Communication Handler:\\}
     Database Handler uses Sensor Communication Handler in order to send data to sensors and receive data from the sensors. Information that need to be stored are first passes
     through Sensor Communication Handler, and stop at Database Handler in order to be stored. When the data needs to be processed, Database Handler fetches this data
-    and sends it to Computer Vision and AI analyzer via Sensor Communication Handler.  
-    \textbf{Design Rationale:\\}
+    and sends it to Computer Vision and AI analyzer via Sensor Communication Handler. 
+    \textbf{\\Design Rationale:}
     \begin{itemize}
         \item  Database Handler is the main part of the program as Amazon Go runs on lots of environmental data, and hence, interaction of the Database Handler and
         Sensor Communication handler is a must.
@@ -974,11 +975,10 @@ $$ $$
             Vision and AI Systems.
     \end{itemize}
     
-
-    \textbf{The Interface between the Database Handler and the Cart Status:\\}
+    \textbf{\\The Interface between the Database Handler and the Cart Status:\\}
     Cart status is responsible for issuing a current cart read request to the Database Handler and storing it. In other words, it will ask the user's cart information to the Database Handler and 
     Database Handler will fetch it from the database and will send it as a response. After that, it is responsible for displaying the retrieved cart data to the user. 
-    \textbf{Design Rationale:\\}
+    \textbf{\\Design Rationale:}
     \begin{itemize}
        \item Cart Status component must be very responsive as it is an I/O operation and noone wants to wait when he/she clickes to an icon on the mobile device. 
        Hence, there is no middleman between Database Handler and Cart Status
@@ -986,13 +986,13 @@ $$ $$
        \item Since Cart Status is an I/O operation, Database Handler may give priority to it.
     \end{itemize}
     
-    \textbf{The Interface between the Database Handler and Payment Handler:\\}
+    \textbf{\\The Interface between the Database Handler and Payment Handler:\\}
     Paymend Handler is responsible for handling the payment related operations. It will ask for the user's payment information and cart information to the Database Handler,
     then Database Handler will fetch them from the database and will send them as a response. 
     After that, Payment Handler tries to complete the payment by using the retrieved data and depending on if the payment was a success or not, it either raises an error or 
     returns a message about the successful completion of the payment.
     
-    \textbf{Design Rationale:\\}
+    \textbf{\\Design Rationale:}
     \begin{itemize}
        \item Since there are more than 1 banks, Payment Handler might be more than one. For simplicity, it is shown as one component but the operations for different banks 
        shall follow the same procedures. 
@@ -1000,26 +1000,29 @@ $$ $$
        by not introducing an additional middle-man, we decrease the chance of an intrusion. 
     \end{itemize}
 
-    \textbf{The Interface between the Sensor Communication Handler and Computer Vision Analyzer:\\}
+    \textbf{\\The Interface between the Sensor Communication Handler and Computer Vision Analyzer:\\}
     Computer Vision Analyzer will receive visual data from the Sensor Communication Handler to process it. Then, it will send back the processed data. How Sensor 
     Communication Handler works and design rationale for this is given in the first item of this subsection. 
     
 
-    \textbf{The Interface between the Sensor Communication Handler and AI Analyzer:\\}
+    \textbf{\\The Interface between the Sensor Communication Handler and AI Analyzer:\\}
     AI Analyzer will receive AI related data from the Sensor Communication Handler to process it. Then, it will send back the processed data. 
     How Sensor Communication Handler works and design rationale for this is given in the first item of this subsection. 
     
-    \textbf{The Interface between the QR Authentication System and Sensor Communication Handler:\\}
+    \textbf{\\The Interface between the QR Authentication System and Sensor Communication Handler:\\}
     QR Authentication System receives decrypted QR code from Sensor Communication Handler to validate it. Then, sends the result as a response to Sensor Comminucation Handler.
     Sensor Comminucation Handler interacts with turnstiles for this particular case. It is responsible for validating the QR code and stimulating the turnstiles. 
+   
+    \textbf{\\Design Rationale:}
     \begin{itemize}
         \item QR Authentication System generates encrypted QR codes and validates decrypted QR codes. Decrypted ones comes from the ensor Communication Handler.
         \item Sensor Communication Handler acts as a buffer and a cache between QR Authentication System and Database Handler. 
-     \end{itemize}
+    \end{itemize}
 
-    \textbf{The Interface between the QR Authentication System and Login System:\\}
+    \textbf{\\The Interface between the QR Authentication System and Login System:\\}
     Login system requires encrypted QR code to display it to user's phone. QR Authentication System sends that QR to login system.
-    \textbf{Design Rationale:\\}
+    
+    \textbf{\\Design Rationale:}
     \begin{itemize}
        \item Users need QR code to enter the stores. Login System displays it and QR Authentication System handles the rest.
        \item QR code can be generated by the QR Authentication System only and Login System will request QR codes from it very frequently.
@@ -1028,14 +1031,137 @@ $$ $$
     \end{itemize}
     
     \subsubsection{External Interfaces}
+
     \subsubsubsection{User Interfaces}
-    \textbf{Remote Server Interface:\\}
-    \textbf{Sensor Management Interface:\\}
-    \textbf{Database Management Interface:\\}
-    \textbf{Payment API:\\}
+    \textbf{\\User Sign-up Interface:\\}
+    This interface provides a user friendly way for non-registered users to register. Users enter his/her personal and payment information
+    here, then these information are sent to the server and stored in the database.
+    After a valid registration, users will be informed that the registration is successfully
+    completed. By creating an account, users agree to Amazon Go's Conditions of Use
+    and Privacy Notice automatically, which is stated during the registration. There is
+    no time restriction in this part, but closing the application during the registration
+    will require to start the registration from the beginning. Most of the information
+    given in this part can be replaced later, only the username cannot be changed.
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item This interface is a user's first entry point to the whole Amazon Go system. 
+       \item Fields denoted with * must be filled to have a valid account.
+    \end{itemize}
+
+    \textbf{\\User Cart Interface:\\}
+    This interface provides a simple and informative way for
+    the customers to see the details of their current session while shopping. Users need
+    to open the app during the shopping and this screen will be directly opened when
+    they open the app. Each item they took will be listed with the most important
+    details: price, quantity, size-weight-volume and etc. Users must login to see this
+    interface, but since they can not enter the shop before the login, this will be not the
+    case most of the time. Yet, if they logout after entering, they can login back and see
+    their cart. If they close the app, they can simply open it back and the cart will be
+    shown. This screen will end after the customer leaves the store. This screen will be 
+    designed for mobile phones especially.
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item This interface is designed to to be displayed on the users' smart phone. Therefore, it is simple and user-friendly.
+       \item Depending on screen size, this interface may change. 
+    \end{itemize}
+
+    \textbf{\\User Payment Interface:\\}
+    This interface is designed to be fully informative for
+    the customers to see the every detail of their past shopping sessions. Users can see a
+    list of their previous sessions and can select a session to see the every detail including
+    the receipt. Also, there is a button available to change the payment method here,
+    so that customers can reach this method easily. Input form of the payment method
+    is identical to the input form at the registration. User will be informed about the
+    validation of the payment method change after the change attempt. There is no
+    time restriction in this part, receipts can bee seen immediately after a few minutes
+    maximum and will be stored until it is deleted manually.
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item Although a receipt can be deleted by the user, the receipt will be kept in a seperate table in the database for legal purposes.
+       Duration of this may change depending on the local regulations.
+    \end{itemize}
+
+    \textbf{\\System Admin Interface:\\}
+    This interface is designed to be informative about
+    the stores and the user actions. System admin must login to the system with a
+    authorized username and password to use this interface. This interface can be only
+    reached from the Amazon facilities, it is unreachable from external. A list of the
+    stores and warehouses will be seen after entering the system. User will be able
+    to select a store or a warehouse to see the stock details of that place. Moreover,
+    there will be a tab to switch to the logs. Here, user can make a search about any
+    user by their username, name and e-mail. Results can be altered with these action
+    types: Registration time and date, entering to a specific store, Successful and failed
+    payment attempts and blacklisted. User must login again after being idle for 30
+    minutes due to privacy of customer data. 
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item This interface is necessary for the system admins to take actions on the system.
+       \item This screen shall be implemented for a computer screen as system interventions are done here.
+    \end{itemize}
+    
+    \textbf{\\User Login Interface:\\}
+    This interface is designed to allow a user to enter an Amazon Go store. When clicked, this interface fetches the QR code that needs to be scanned 
+    and displays it on the customer's mobile device. The customer gets his/her QR Code scanned by the turnstiles and then, this interface displays whether the 
+    validation of the QR code was successful or not. If not, it prompts an error message alongside with an error code, which can be used when contacting to the system admins 
+    to solve login problem. 
+
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item This interface is necessary for customers to enter the Amazon Go stores.
+       \item A Re-Generate button shall be present to overcome QR code related bugs.
+       \item Must be designed for a mobile device and hence, design may change according to the screen size.
+    \end{itemize}
+    
     \subsubsubsection{System Interfaces}
-    \textbf{User Sign-up Interface:\\}
-    \textbf{User Cart Interface:\\}
+
+    \textbf{\\Interface Between Sensor API and Database:\\}
+    This interface collects data from the corresponding sensor and sends them to database. This data is raw data (i.e, not processed by the Computer Vision and AI Libraries).\\
+    \textbf{\\Design Rationale:}
+    
+    \begin{itemize}
+       \item A sensor must use its own API. For instance, if the sensor is a weight sensor, it must use the corresponding weight sensor API.
+        \item Since this data comes from the sensors directly, it is raw data. 
+    \end{itemize}
+
+    \textbf{\\Interface Between Sensor API and Computer Vision - AI:\\}
+    Sensor API collects the raw data and sends them to database. The data coming from the cameras and sensors need to be processed with the help of
+    Computer Vision and AI libraries. This raw data is fetched from the database since it is stored in the database by the Sensor API. 
+
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+        \item Sensors and cameras are the essential parts which differentiates the Amazon Go from the other stores.  
+        \item This interface is important for the collaboration between the cameras,sensors and the Computer Vision - AI system.
+    \end{itemize}
+
+    \textbf{\\Interface Between Database and Computer Vision - AI:\\}
+        Since Sensor API sends raw data to the database, the libraries that makes Computer Vision and AI calculations must fetch them from the database.    
+
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item Database management is done via MySQL.
+    \end{itemize}
+
+    \textbf{\\Interface Between Sensor API and Bank API:\\}
+        When users leave the Amazon Go stores, communication with the Bank to complete the payment is required.
+    
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item Users must have a verified payment method before entering the stores so that illegal activities can be prevented beforehand.
+    \end{itemize}
+
+    \textbf{\\Interface Between Database and Bank API:\\}
+    
+       Since the users' payment information are stored in the database, to select which Bank API will be used and what parameters that this selected Bank API will use must be 
+       determined by fetching these informations from the database. This is done by this interface.
+
+    
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+       \item Database shall store verified banks so that users can be informed about the supported payment methods.
+       \item Receipts shall be sent to the database by the bank, directly with the defined format after successfull payments of the users.
+    \end{itemize}
+
+
 \end{document}
 
 
@@ -1046,3 +1172,9 @@ $$ $$
 %``I always thought something was fundamentally wrong with the universe'' \citep{adams1995hitchhiker}
 %\bibliographystyle{plain}
 %\bibliography{references}
+
+%TODO
+% - References
+% - Sequence Diagram x 5
+% - Change History 
+% - Chapter 4.3

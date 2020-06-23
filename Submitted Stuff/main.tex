@@ -1156,6 +1156,7 @@ $$ $$
     Database Handler uses Sensor Communication Handler in order to send data to sensors and receive data from the sensors. Information that need to be stored are first passes
     through Sensor Communication Handler, and stop at Database Handler in order to be stored. When the data needs to be processed, Database Handler fetches this data
     and sends it to Computer Vision and AI analyzer via Sensor Communication Handler. 
+    
     \textbf{\\Design Rationale:}
     \begin{itemize}
         \item  Database Handler is the main part of the program as Amazon Go runs on lots of environmental data, and hence, interaction of the Database Handler and
@@ -1168,6 +1169,7 @@ $$ $$
     \textbf{\\The Interface between the Database Handler and the Cart Status:\\}
     Cart status is responsible for issuing a current cart read request to the Database Handler and storing it. In other words, it will ask the user's cart information to the Database Handler and 
     Database Handler will fetch it from the database and will send it as a response. After that, it is responsible for displaying the retrieved cart data to the user. 
+    
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item Cart Status component must be very responsive as it is an I/O operation and noone wants to wait when he/she clickes to an icon on the mobile device. 
@@ -1221,7 +1223,7 @@ $$ $$
     \end{itemize}
     
     \subsubsection{External Interfaces}
-
+    
     \subsubsubsection{User Interfaces}
     \textbf{\\User Sign-up Interface:\\}
     This interface provides a user friendly way for non-registered users to register. Users enter his/her personal and payment information
@@ -1232,6 +1234,7 @@ $$ $$
     no time restriction in this part, but closing the application during the registration
     will require to start the registration from the beginning. Most of the information
     given in this part can be replaced later, only the username cannot be changed.
+    
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item This interface is a user's first entry point to the whole Amazon Go system. 
@@ -1249,6 +1252,7 @@ $$ $$
     their cart. If they close the app, they can simply open it back and the cart will be
     shown. This screen will end after the customer leaves the store. This screen will be 
     designed for mobile phones especially.
+    
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item This interface is designed to to be displayed on the users' smart phone. Therefore, it is simple and user-friendly.
@@ -1265,6 +1269,7 @@ $$ $$
     validation of the payment method change after the change attempt. There is no
     time restriction in this part, receipts can bee seen immediately after a few minutes
     maximum and will be stored until it is deleted manually.
+    
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item Although a receipt can be deleted by the user, the receipt will be kept in a seperate table in the database for legal purposes.
@@ -1283,6 +1288,7 @@ $$ $$
     types: Registration time and date, entering to a specific store, Successful and failed
     payment attempts and blacklisted. User must login again after being idle for 30
     minutes due to privacy of customer data. 
+    
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item This interface is necessary for the system admins to take actions on the system.
@@ -1305,9 +1311,9 @@ $$ $$
     \subsubsubsection{System Interfaces}
 
     \textbf{\\Interface Between Sensor API and Database:\\}
-    This interface collects data from the corresponding sensor and sends them to database. This data is raw data (i.e, not processed by the Computer Vision and AI Libraries).\\
-    \textbf{\\Design Rationale:}
+    This interface collects data from the corresponding sensor and sends them to database. This data is raw data (i.e, not processed by the Computer Vision and AI Libraries).
     
+    \textbf{\\Design Rationale:}
     \begin{itemize}
        \item A sensor must use its own API. For instance, if the sensor is a weight sensor, it must use the corresponding weight sensor API.
         \item Since this data comes from the sensors directly, it is raw data. 
@@ -1344,7 +1350,6 @@ $$ $$
        Since the users' payment information are stored in the database, to select which Bank API will be used and what parameters that this selected Bank API will use must be 
        determined by fetching these informations from the database. This is done by this interface.
 
-    
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item Database shall store verified banks so that users can be informed about the supported payment methods.

@@ -6,7 +6,7 @@
 \usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage{longtable}
-
+\usepackage{makecell}
 \usepackage
 [       a4paper,
         left=2.5cm,
@@ -843,11 +843,201 @@ $$ $$
         readReceipt & Gets the receipt data according to given parameters from the database. \\ \hline
         readLog & Gets the logs that are related to given parameters from the database. \\ \hline
         getCurrentCart & Gets the given customer's current cart information from the database. \\ \hline  
-    \caption{Operation descriptions}
+    \caption{Operation Descriptions}
     \label{oper_desc}
     \end{longtable}       
+    
+    \textbf{Important Note:} The table below is the Operation Design Table. Some of the entries' input field are denoted with void, however since this is an object oriented paradigm design, these methods may use its class' local variables. Hence, please refer to \nameref{icd} in order to see what local variables are used for void input fields.\\
+    
+    \begin{longtable}[H]{|p{3.8cm}|p{3cm}|p{4cm}|p{4.5cm}|}
+        \hline
+        \textbf{Operation} & \textbf{Inputs} & \textbf{Outputs} & \textbf{Exceptions} \\ \hline
+        generateQRCode 
+        & void 
+        & Returns the generated QR Code  
+        & - \\ \hline
+        
+        sendQRCode
+        & -targetCustomerID
+        & Sends the generated QR Code to the user with the ID targetCustomerID 
+        & targetCustomerID 
+        is not a valid user or connection with the target customer is lost.  \\ \hline
+        
+        checkValidation
+        & -decryptedQR 
+        & Returns true if the decrypted QR code is valid
+        & Checksum of the decrypted QR code differs(data loss in transmission) or decrypted QR code is NULL  \\ \hline
+       
+        sendAuthData 
+        & void 
+        & Returns the message sent to the Sensor Communication System 
+        & Sensor Comm. System is busy or connection error occurs \\ \hline
+        
+        
+        drawQR 
+        & void 
+        & Returns true if the encryptedQRCode variable is successfully drawn.
+        & Database connection error occurs or encryptedQRCode is NULL\\ \hline
+        
+        readPaymentInfo 
+        & -customerID
+        & Returns all the defined payment information of the customer with the ID customerID
+        & customerID is not a valid or database connection error occurs.\\ \hline
+       
+        readCart 
+        & -customerID 
+        & Returns the current cart information of the customer with the ID customerID
+        & customerID is not a valid or database connection error occurs. \\ \hline
+       
+        sendPaymentRequest 
+        & -bankID \makecell{-totalCost} -paymentDetails
+        & Returns true if the request results in success.
+        & bankID or paymentDetails are not valid or database connection error occurs.\\ \hline
+       
+        raisePaymentError
+        & void
+        & Prints an error message indicating that payment has failed.
+        & sendPaymentRequest function throws an exception or connection with the user is lost.\\ \hline
+       
+        validatePayment
+       
+        Completion 
+        & void
+        & Prints a success message indicating that payment is a success. 
+        & sendPaymentRequest function throws an exception or connection with the user is lost.\\ \hline
+       
+        getSensorIdList 
+        & -storeID
+        & Given storeID, returns all list of sensors in this store.
+        & storeID is not valid or retrieved list is NULL or database connection occurs\\ \hline
+       
+        stimulateTurnstile 
+        & -sensorID
+        & Signals the turnstile with the sensorID and returns true.
+        & sensorID is not valid or sensor with the given sensorID is not a turnstile or the turnstile is offline\\ \hline
+       
+        readRawData 
+        &-sensorID  
+        & Returns the read raw data from the sensors
+        & sensorID is not valid or sensor with the given sensorID is not a turnstile or the turnstile is offline or raw data is NULL\\ \hline
+       
+        sendRawData 
+        & void
+        & Returns true if the forwarding of the rawData variable is complete.
+        & rawData is NULL or Computer Vision-AI system is overworking hence losing performance\\ \hline
+       
+        readEncryptedQRCode 
+        & void
+        & Returns the encrypted QR code that is read from the user. 
+        & Read QR code is NULL or connection with the user is lost.\\ \hline
+       
+        processData 
+        & -rawSensorData
+        & Returns the Computer Vision and AI processing results obtained processing the rawSensorData
+        & rawSensorData is NULL or Computer Vision-AI system is overworking.\\ \hline    
+       
+        sendProcessedData 
+        & void
+        & Returns true if the processedData variable is successfully registered in the database.
+        & processedData is NULL or database connection error occurs.\\ \hline
+       
+        readData 
+        & -customerID
+        & Returns the read current cart information of the given user.
+        & Connection with the database is lost or user is not logged in or customerID is not valid\\ \hline
+       
+        displayData 
+        & void
+        & Displays the current cart information using the class' local variables and returns true on success.
+        & Data to be displayed is NULL.\\ \hline
+       
+        updateRecord 
+        & -tableTypeID \makecell{-newData} -searchedData
+        & Returns true if the update is successful, else false. 
+        & tableTypeID is not a valid table ID or searchedData is not found or connection with the database is lost.\\ \hline
+        
+        addRecordToTable 
+        & -tableTypeID \makecell{-addedData}
+        & Returns true if the addition is successful, else false.
+        & tableTypeID is not a valid table ID or addedData is NULL or connection with the database is lost.\\ \hline
+       
+        deleteRecordFromTable 
+        & -tableTypeID \makecell{searchedRecord}
+        & Returns true if the deletion of the searchedRecord is successful
+        & searchedRecord is NULL or tableTypeID is not valid or connection with the databse is lost.\\ \hline
+        
+        getPaymentDetails 
+        & -customerID \makecell{-type}
+        & Returns the payment details of the given customerID specified with type
+        & customerID is not valid or type is not an accepted payment method or database connection error occurs.\\ \hline
+        
+        getProductData
+        & -productID
+        & Returns the all data related to given productID from the database.
+        & productID is not valid or connection with the database is lost.\\ \hline
+        
+        getCustomerData 
+        & -customerID
+        & Returns customer information of the customer with ID customerID from the database. 
+        & customerID is not valid or database connection error occurs.\\ \hline      
+        
+        getStoreData 
+        & -storeID
+        & Returns all the information of the store with the ID storeID from the database.
+        & storeID is not valid or database connection is lost.\\ \hline
+        
+        getSensorIdList
+        & -storeID
+        & Returns the all list of sensors in the given storeID from the database.
+        & storeID is not valid or database connection is lost.\\ \hline
+        
+        authorizeStoreWorker 
+        & -storeID \makecell{-storeWorkerData}
+        & Returns true if the authorization of the new worker is successful.
+        & storeID is not valid or storeWorkerData is NULL or database connection error occurs\\ \hline
+        
+        
+        readReceipt 
+        & -receiptID \makecell{-cartID} -storeID
+            \makecell{-customerID} \makecell{-paymMethod}
+        & Returns the receipt information of the given user in the given store with the given payment method and cartID from the database.
+        & At least one of the given parameters is invalid or database connection error occurs.\\ \hline
+        
+        readLog 
+        & -logNumber \makecell{-customerID} -productID \makecell{-storeID}
+        & Returns the log that are associated with the given parameters from the database.
+        & At least one of the given parameters is invalid or database connection error occurs.\\ \hline
+        
+        getCurrentCart 
+        & -customerID
+        & Returns the current cart information of the given user.
+        & customerID is not valid or customer is not logged in (i.e not shopping currently) or database connection error occurs.\\ \hline  
+        
+        \caption{Operation Design }
+
+    \label{oper_design}
+    \end{longtable} 
+     
+
+ 
 
     \textbf{Design Rationale:\\}
+    \begin{itemize}
+        
+        \item There is a base class called class Data, which basically forms a base for all the class items that are stored in the database such as customer information, store information etc.
+        
+        \item By doing so, we do not have to write different methods or a method with lots of if-switch statements in the Database Handler for each data type update or delete. We can directly call these methods with this class Data and depending on the tableTypeID, it makes the corresponding changes on this table.
+       
+        \item By avoiding these if-switch statements and extra methods, we increase both the performance of the database operations and maintainability of the code.
+        
+        \item All methods that use a class as its input throws an exception if the class data is NULL so that no NULL data is stored in the database. This increases the speed of the database and reduces the storage needed for the database. 
+        
+        \item Depending on some special days such as Black Friday, number of customers may increase, which in turn puts lots of pressure on the Computer Vision and AI System. 
+        If that is the case and we keep loading more data on them, it may crash the system or may produce corrupt data. To prevent this, System Communication Handler may choose to buffer rawData rather than immediately sending it to the Computer Vision and AI libraries.
+        \item All systems are directly or indirectly connected to Database Handler since Amazon Go is based on a data processing system. Hence, Database Handler is basically the "main" of the Amazon Go.
+        
+        \item Since this is an object oriented paradigm design, some functions do not take parameters. For further information about void input, please read the \textbf{Important Note} that is placed right before the \nameref{oper_design} Table.
+    \end{itemize}
     
     \subsubsection{Database Operations}
 

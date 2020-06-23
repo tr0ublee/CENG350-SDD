@@ -68,7 +68,7 @@
     colorlinks,
     citecolor=black,
     filecolor=black,
-    linkcolor=black,
+    linkcolor=blue,
     urlcolor=black
 }
 
@@ -94,7 +94,7 @@
 \begin{tabular}{|l|l|}
 \hline
 \textbf{\Huge{Version}} & \textbf{\Huge{Date}}  \\ \hline
- %
+ 1.0 & 24/06/2020 \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -1140,7 +1140,7 @@
     \textbf{Design Rationale:\\}
     \begin{itemize}
         \item MySQL will be used as the database management system.
-        \item Important operations will create logs as it can be seen on the \hyperref[CRUD]{Table 18.}
+        \item Important operations will create logs as it can be seen on the \nameref{CRUD}
         \item updateRecord, addRecordToTable and deleteRecordFromTable are generic functions that are able to manipulate certain tables. These will also create a log every time they are called.
     \end{itemize}
 
@@ -1182,6 +1182,14 @@
     then Database Handler will fetch them from the database and will send them as a response. 
     After that, Payment Handler tries to complete the payment by using the retrieved data and depending on if the payment was a success or not, it either raises an error or 
     returns a message about the successful completion of the payment.
+
+    \begin{center}
+        \begin{figure}[H]
+            %\includegraphics[width=\linewidth]{Images/WithdrawMoney.png}  %%%%%%%%%%%%%%%HEREEEEEE
+            \caption{Withdraw Money Sequence Diagram}
+            \label{wdMoney}
+        \end{figure}
+    \end{center}
     
     \textbf{\\Design Rationale:}
     \begin{itemize}
@@ -1203,6 +1211,13 @@
     \textbf{\\The Interface between the QR Authentication System and Sensor Communication Handler:\\}
     QR Authentication System receives decrypted QR code from Sensor Communication Handler to validate it. Then, sends the result as a response to Sensor Comminucation Handler.
     Sensor Comminucation Handler interacts with turnstiles for this particular case. It is responsible for validating the QR code and stimulating the turnstiles. 
+    \begin{center}
+        \begin{figure}[H]
+           % \includegraphics[width=\linewidth]{Images/QRCodeScan.png}  %%%%%%%%%%%%%%%HEREEEEEE
+            \caption{Scan Login QR Code Sequence Diagram}
+            \label{QRscan}
+        \end{figure}
+    \end{center}
    
     \textbf{\\Design Rationale:}
     \begin{itemize}
@@ -1258,6 +1273,15 @@
        \item Depending on screen size, this interface may change. 
     \end{itemize}
 
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 10cm, height = 7cm]{Images/CartInfo.png}
+            \caption{A Prototype Interface to View Current Cart}  
+            \label{ccartinfo}
+        \end{figure}
+    \end{center}
+
     \textbf{\\User Payment Interface:\\}
     This interface is designed to be fully informative for
     the customers to see the every detail of their past shopping sessions. Users can see a
@@ -1268,12 +1292,29 @@
     validation of the payment method change after the change attempt. There is no
     time restriction in this part, receipts can bee seen immediately after a few minutes
     maximum and will be stored until it is deleted manually.
+
+    \begin{center}
+        \begin{figure}[H]
+            %\includegraphics[width=\linewidth]{Images/personalPayment.png}
+            \caption{Enter Personal and Payment Information Sequence Diagram}  %%%%%%%%%%%%%%%HEREEEEEE
+            \label{ppISD}
+        \end{figure}
+    \end{center}
     
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item Although a receipt can be deleted by the user, the receipt will be kept in a seperate table in the database for legal purposes.
        Duration of this may change depending on the local regulations.
     \end{itemize}
+
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 5cm, height = 10cm]{Images/PaymentCards.png}
+            \caption{Payment Card Update-Select Screen}  
+            \label{userlogininterface}
+        \end{figure}
+    \end{center}
 
     \textbf{\\System Admin Interface:\\}
     This interface is designed to be informative about
@@ -1300,73 +1341,124 @@
     validation of the QR code was successful or not. If not, it prompts an error message alongside with an error code, which can be used when contacting to the system admins 
     to solve login problem. 
 
+
+
+
     \textbf{\\Design Rationale:}
     \begin{itemize}
        \item This interface is necessary for customers to enter the Amazon Go stores.
        \item A Re-Generate button shall be present to overcome QR code related bugs.
        \item Must be designed for a mobile device and hence, design may change according to the screen size.
     \end{itemize}
+
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 5cm, height = 10cm]{Images/QRCodeScan.png}
+            \caption{QR Code on User Login Interface }  
+            \label{userlogininterface}
+        \end{figure}
+    \end{center}
     
+
+    %=======================================================================
     \subsubsubsection{System Interfaces}
 
-    \textbf{\\Interface Between Sensor API and Database:\\}
-    This interface collects data from the corresponding sensor and sends them to database. This data is raw data (i.e, not processed by the Computer Vision and AI Libraries).
+    \textbf{\\Interface Between Sensor API and QR Authentication System:\\}
+
+    QR Code scanner is basically a sensor that acquires visual data from the environment. Hence, it also has a corresponding Sensor API. When a user gets his/her QR code scanned by the turnstiles,
+    this QR code must be validated to enable user to shop. This interface forwards this QR code data that is read by the QR code scanner to the QR Authentication System to be validated. 
     
     \textbf{\\Design Rationale:}
     \begin{itemize}
-       \item A sensor must use its own API. For instance, if the sensor is a weight sensor, it must use the corresponding weight sensor API.
-        \item Since this data comes from the sensors directly, it is raw data. 
+      \item QR Code is a special data when compared to visual and weight data because, QR Code scanning process is the entry point of a customer to the Amazon Go services. 
+      Hence, it must be treated individually and specially. 
+      \item Having a separate QR Authentication System makes the processing of the login requests faster. 
     \end{itemize}
 
-    \textbf{\\Interface Between Sensor API and Computer Vision - AI:\\}
-    Sensor API collects the raw data and sends them to database. The data coming from the cameras and sensors need to be processed with the help of
-    Computer Vision and AI libraries. This raw data is fetched from the database since it is stored in the database by the Sensor API. 
+    \textbf{\\Interface Between Sensor API and Sensor Communication System:\\}
+    
+    Sensors generate raw data by observing the real world, which needs to be processed. This interface is designed to acquire raw data from the Sensor API. This is a bidirectional interface. 
+    One way of direction is, the Sensor API reads the environmental raw data, and this interface forwards this data to Sensor Comminucation System. 
+    In other words, this interface is required to internalize the raw data.
+    Other way of direction is, Sensor Comminucation System sends a stimulus to the Sensor API, which in turn opens the turnstile to enable a user to enter the store physically.
+
+
+    \begin{center}
+        \begin{figure}[H]
+           % \includegraphics[width=\linewidth]{Images/essd.png}  %%%%%%%%%%%%%%%HEREEEEEE
+            \caption{End Shopping Session Sequence Diagram}
+            \label{essd}
+        \end{figure}
+    \end{center}
+
+
+   
+    \textbf{\\Design Rationale:}
+    \begin{itemize}
+        \item Amazon Go basically runs on data and this data comes from the sensors, which uses the corresponding Sensor API.
+        \item The sensors in the Amazon Go stores will generate raw data and the Sensor Communication System needs to deliver it to the Computer Vision and AI System so that the raw data can be processed. 
+        \item Hence, this raw data somehow must be fetched from the Sensor API and must be made an internal data. This is what this interface basically does.
+
+    \end{itemize}
+
+   
+
+
+    \textbf{\\Interface Between Bank API and Payment Handler:\\}
+        
+    This interface is the bridge between the Payment Handler and Bank API in order to money transactions be completed. Payment information of the users are stored in the system database and they must be sent 
+    to Bank API to complete the payment. This is done by this interface. 
 
     \textbf{\\Design Rationale:}
     \begin{itemize}
-        \item Sensors and cameras are the essential parts which differentiates the Amazon Go from the other stores.  
-        \item This interface is important for the collaboration between the cameras,sensors and the Computer Vision - AI system.
+       \item Payment information is stored in hashed form in database because asking the payment details everytime when a user leaves the store makes the purpose of Amazon Go pointless. Also, asking payment 
+       information everytime is not a user friendly approach. 
+       \item Since payment information is a sensitive data, they are stored as hash values.
+       \item This hashed data somehow must be forwarded to Bank API, which is done by this interface. 
     \end{itemize}
 
-    \textbf{\\Interface Between Database and Computer Vision - AI:\\}
-        Since Sensor API sends raw data to the database, the libraries that makes Computer Vision and AI calculations must fetch them from the database.    
+    \textbf{\\Interface Between Computer Vision-AI Libraries and Database Handler:\\}
 
-    \textbf{\\Design Rationale:}
-    \begin{itemize}
-       \item Database management is done via MySQL.
-    \end{itemize}
-
-    \textbf{\\Interface Between Sensor API and Bank API:\\}
-        When users leave the Amazon Go stores, communication with the Bank to complete the payment is required.
+    This interface forwards the processed data to the database. 
+    The processed data is obtained from the Computer Vision and AI Libraries. 
+    Then, this data is forwarded by interface to the database in order to be stored. 
     
     \textbf{\\Design Rationale:}
     \begin{itemize}
-       \item Users must have a verified payment method before entering the stores so that illegal activities can be prevented beforehand.
+       \item Computer Vision and AI Libraries directly send this data to the database becuase every action in a store must be logged, hence registration of these actions to the database must be fast. 
+       
+       \item All the actions must be stored for legal purposes. Also, to give better suggestions to the users and make better predictions by the AI in the future, all data is stored. 
+    
     \end{itemize}
 
-    \textbf{\\Interface Between Database and Bank API:\\}
-    
-       Since the users' payment information are stored in the database, to select which Bank API will be used and what parameters that this selected Bank API will use must be 
-       determined by fetching these informations from the database. This is done by this interface.
+    \textbf{\\Interface Between Computer Vision-AI Libraries and Computer Vision and AI System:\\}
+    Computer Vision and AI System will have its own logic to make a working Amazon Go store. Along with that logic, it will need some fundamental Computer Vision-AI libraries so that the team can
+    focus on the logic more. This interface will be used to provide a meaningful communication between them.
+
+
+    \begin{center}
+        \begin{figure}[H]
+            %\includegraphics[width=\linewidth]{Images/cvai.png} %%%%%%%%%%%%%%%HEREEEEEE
+            \caption{Put Back Product Sequence Diagram}
+            \label{cvai}
+        \end{figure}
+    \end{center}
 
     \textbf{\\Design Rationale:}
     \begin{itemize}
-       \item Database shall store verified banks so that users can be informed about the supported payment methods.
-       \item Receipts shall be sent to the database by the bank, directly with the defined format after successfull payments of the users.
+       \item Since it is very expensive to make Computer Vision-AI algorithms from scratch, any useful Computer Vision and AI related libraries that are ready to use should be used.
+       \item Computer Vision-AI libraries might be busy with calculations and may be overworking. Therefore in this case, Computer Vision and AI System takes the role of buffering this data.
+       \item This data is not deleted from the buffer until calculations are done successfully. If the data were deleted and the calculations would had failed, then this raw data could not be brought 
+       back by the Sensor API since the requested data is a past event's data. 
     \end{itemize}
+
+ 
 
 
 \end{document}
 
 
 
-
-% ========== MIGHT BE NECESSARY==================%
-
-%``I always thought something was fundamentally wrong with the universe'' \citep{adams1995hitchhiker}
-%\bibliographystyle{plain}
-%\bibliography{references}
-
 %TODO
-% - Sequence Diagram x 5
-% - Change History 
+% - Fill marks with  %%%%%%%%%%%%%%%HEREEEEEE

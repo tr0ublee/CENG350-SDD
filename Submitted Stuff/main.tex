@@ -854,39 +854,39 @@ $$ $$
         \textbf{Operation} & \textbf{Inputs} & \textbf{Outputs} & \textbf{Exceptions} \\ \hline
         generateQRCode 
         & void 
-        & Returns the generated QR Code  
+        & Returns the generated QR Code.  
         & - \\ \hline
         
         sendQRCode
         & -targetCustomerID
-        & Sends the generated QR Code to the user with the ID targetCustomerID 
+        & Sends the generated QR Code to the user with the ID targetCustomerID. 
         & targetCustomerID 
         is not a valid user or connection with the target customer is lost.  \\ \hline
         
         checkValidation
         & -decryptedQR 
-        & Returns true if the decrypted QR code is valid
-        & Checksum of the decrypted QR code differs(data loss in transmission) or decrypted QR code is NULL  \\ \hline
+        & Returns true if the decrypted QR code is valid.
+        & Checksum of the decrypted QR code differs(data loss in transmission) or decrypted QR code is NULL.  \\ \hline
        
         sendAuthData 
         & void 
-        & Returns the message sent to the Sensor Communication System 
-        & Sensor Comm. System is busy or connection error occurs \\ \hline
+        & Returns the message sent to the Sensor Communication System. 
+        & Sensor Comm. System is busy or connection error occurs. \\ \hline
         
         
         drawQR 
         & void 
         & Returns true if the encryptedQRCode variable is successfully drawn.
-        & Database connection error occurs or encryptedQRCode is NULL\\ \hline
+        & Database connection error occurs or encryptedQRCode is NULL.\\ \hline
         
         readPaymentInfo 
         & -customerID
-        & Returns all the defined payment information of the customer with the ID customerID
+        & Returns all the defined payment information of the customer with the ID customerID.
         & customerID is not a valid or database connection error occurs.\\ \hline
        
         readCart 
         & -customerID 
-        & Returns the current cart information of the customer with the ID customerID
+        & Returns the current cart information of the customer with the ID customerID.
         & customerID is not a valid or database connection error occurs. \\ \hline
        
         sendPaymentRequest 
@@ -909,22 +909,22 @@ $$ $$
         getSensorIdList 
         & -storeID
         & Given storeID, returns all list of sensors in this store.
-        & storeID is not valid or retrieved list is NULL or database connection occurs\\ \hline
+        & storeID is not valid or retrieved list is NULL or database connection occurs.\\ \hline
        
         stimulateTurnstile 
         & -sensorID
         & Signals the turnstile with the sensorID and returns true.
-        & sensorID is not valid or sensor with the given sensorID is not a turnstile or the turnstile is offline\\ \hline
+        & sensorID is not valid or sensor with the given sensorID is not a turnstile or the turnstile is offline.\\ \hline
        
         readRawData 
         &-sensorID  
-        & Returns the read raw data from the sensors
-        & sensorID is not valid or sensor with the given sensorID is not a turnstile or the turnstile is offline or raw data is NULL\\ \hline
+        & Returns the read raw data from the sensors.
+        & sensorID is not valid or sensor with the given sensorID is not a turnstile or the turnstile is offline or raw data is NULL.\\ \hline
        
         sendRawData 
         & void
         & Returns true if the forwarding of the rawData variable is complete.
-        & rawData is NULL or Computer Vision-AI system is overworking hence losing performance\\ \hline
+        & rawData is NULL or Computer Vision-AI system is overworking hence losing performance.\\ \hline
        
         readEncryptedQRCode 
         & void
@@ -933,7 +933,7 @@ $$ $$
        
         processData 
         & -rawSensorData
-        & Returns the Computer Vision and AI processing results obtained processing the rawSensorData
+        & Returns the Computer Vision and AI processing results obtained processing the rawSensorData.
         & rawSensorData is NULL or Computer Vision-AI system is overworking.\\ \hline    
        
         sendProcessedData 
@@ -944,7 +944,7 @@ $$ $$
         readData 
         & -customerID
         & Returns the read current cart information of the given user.
-        & Connection with the database is lost or user is not logged in or customerID is not valid\\ \hline
+        & Connection with the database is lost or user is not logged in or customerID is not valid.\\ \hline
        
         displayData 
         & void
@@ -963,12 +963,12 @@ $$ $$
        
         deleteRecordFromTable 
         & -tableTypeID \makecell{searchedRecord}
-        & Returns true if the deletion of the searchedRecord is successful
+        & Returns true if the deletion of the searchedRecord is successful.
         & searchedRecord is NULL or tableTypeID is not valid or connection with the databse is lost.\\ \hline
         
         getPaymentDetails 
         & -customerID \makecell{-type}
-        & Returns the payment details of the given customerID specified with type
+        & Returns the payment details of the given customerID specified with type.
         & customerID is not valid or type is not an accepted payment method or database connection error occurs.\\ \hline
         
         getProductData
@@ -994,7 +994,7 @@ $$ $$
         authorizeStoreWorker 
         & -storeID \makecell{-storeWorkerData}
         & Returns true if the authorization of the new worker is successful.
-        & storeID is not valid or storeWorkerData is NULL or database connection error occurs\\ \hline
+        & storeID is not valid or storeWorkerData is NULL or database connection error occurs.\\ \hline
         
         
         readReceipt 

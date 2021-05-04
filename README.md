@@ -1,1 +1,1 @@
-# CENG350 Software Engineering SRS + SDD
+# METU CENG350 Software Engineering SRS & SDD
